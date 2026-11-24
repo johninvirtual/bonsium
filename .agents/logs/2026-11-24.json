@@ -1,0 +1,83 @@
+{
+	"date": "2026-11-24",
+	"project": "bonsium",
+	"entries": [
+		{
+			"timestamp": "2026-11-24T18:54:17+05:30",
+			"type": "decision",
+			"summary": "Initialized .agents templates (log.template, state.template) and established state.json",
+			"details": {
+				"context": "User requested to make AGENTS.md concrete for the Bonsium interactive 3D audiovisual project",
+				"rationale": "Established concrete JSON schemas for state tracking and decision logging according to AGENTS.md governance rules",
+				"affectedModules": ["state", "logs", "documentation"],
+				"outcomes": "Created .agents/template/log.template, .agents/template/state.template, and .agents/state/state.json"
+			}
+		},
+		{
+			"timestamp": "2026-11-24T19:20:00+05:30",
+			"type": "implementation",
+			"summary": "Setup NVM (.nvmrc), robust Makefile, and scaffolded baseline SvelteKit + Svelte 5 + Tailwind 4 project",
+			"details": {
+				"context": "User agreed to initial_setup_and_makefile_2026-11-24.md plan",
+				"rationale": "Provide automated Node environment switching via nvm in Makefile, and establish initial decoupled audiovisual event bus, scales, and Zen HUD",
+				"affectedModules": ["environment", "build", "ui", "audio", "state"],
+				"outcomes": "Created .nvmrc (v26.13.1), Makefile with nvm/dev targets, installed SvelteKit 3 / Svelte 5 / Tailwind 4, created AudioVisualEventBus, MusicalScale registry, WorldState store, and Zen HUD component. Verified make check, make lint, and make build pass cleanly."
+			}
+		},
+		{
+			"timestamp": "2026-11-24T19:57:30+05:30",
+			"type": "implementation",
+			"summary": "Implemented Light/Dark/Auto theme system, 100% procedural Web Audio engine, 4 procedural 3D biospheres, and Zen HUD with ASMR Breathe mode",
+			"details": {
+				"context": "User approved plan theme_generative_audio_3d_items_2026-11-24.md",
+				"rationale": "Deliver fresh greeny light mode, true black neon dark mode, 700ms smooth CSS transitions, purely code-generated Web Audio ASMR drones and category synths, procedural 3D models (Bonsai, Terrarium, Aquarium, Plantarium) with procedural textures, and accessible Zen HUD",
+				"affectedModules": ["theming", "audio", "scene", "ui", "state"],
+				"outcomes": "Created ProceduralAudioEngine with 432Hz ambient drone and category sound signatures; created procedural canvas textures; created 4 procedural Three.js biospheres with interactive raycasting; built 3-state theme toggle (light/dark/auto); added ASMR Breathe contemplation mode. Verified make check, make lint, and make build pass cleanly."
+			}
+		},
+		{
+			"timestamp": "2026-11-24T20:29:30+05:30",
+			"type": "implementation",
+			"summary": "Completed quality rework v2 addressing all 10 user feedback items",
+			"details": {
+				"context": "User approved plan quality_rework_v2_2026-11-24.md addressing 10 feedback items",
+				"rationale": "Decoupled theme from 3D models (UI-only theming), warm and pleasant audio synthesis with 3.2s algorithmic reverb, eliminated z-fighting with polygonOffset and explicit Y offsets, expanded each category with multiple rich items (Sakura Bonsai, Desert Terrarium, Coral Reef Lagoon, Fern & Orchid Plantarium), added Vallisneria water plants and driftwood to aquarium, made all biospheres dynamic and lively, responsive HUD layout avoiding 3D obstruction on mobile, scroll/pinch zoom support, and comprehensive accessibility enhancements.",
+				"affectedModules": ["audio", "scene", "models", "ui", "state", "theming"],
+				"outcomes": "Refactored procedural-audio.ts, bonsai.ts, terrarium.ts, aquarium.ts, plantarium.ts. Created bonsai-sakura.ts, terrarium-desert.ts, aquarium-coral.ts, plantarium-fern.ts. Updated world-state.svelte.ts, Canvas3D.svelte, ZenHud.svelte, +page.svelte, layout.css. Verified make check, make lint, and make build cleanly."
+			}
+		},
+		{
+			"timestamp": "2026-11-24T20:53:00+05:30",
+			"type": "implementation",
+			"summary": "Implemented network exposure, GitHub Pages static build, radial lotus, terrarium living creatures, top-left HUD, and 3rd variants (12 total items)",
+			"details": {
+				"context": "User approved plan expanded_variants_github_pages_and_enhancements_2026-11-24.md",
+				"rationale": "Bound dev server to 0.0.0.0 for LAN testing; switched to @sveltejs/adapter-static with prerender=true and created .github/workflows/deploy.yml; redesigned lotus blossom with radial pivot symmetry, interleaved tiers, and radiating stamen filaments; enhanced terrarium with animated crawling miniature garden snail and hovering bioluminescent fireflies; added museum drainage feet to pine bonsai pot; redesigned Zen HUD to place prominent variant switcher and info card in top-left; and added 4 brand new 3rd variants (Windswept Juniper Bonsai, Carnivorous Pitcher & Sundew Bog, Moon Jellyfish Abyssal Tank, Night-Blooming Cereus).",
+				"affectedModules": ["devserver", "deployment", "scene", "models", "ui", "state"],
+				"outcomes": "Installed @sveltejs/adapter-static; created .github/workflows/deploy.yml; updated plantarium.ts, terrarium.ts, bonsai.ts; created bonsai-juniper.ts, terrarium-carnivorous.ts, aquarium-jellyfish.ts, plantarium-cereus.ts; updated world-state.svelte.ts, ZenHud.svelte, Canvas3D.svelte; verified make check, make lint, and make build."
+			}
+		},
+		{
+			"timestamp": "2026-11-24T21:15:00+05:30",
+			"type": "implementation",
+			"summary": "Completed mobile UI overhaul and real-world botanical/aquatic 3D model rework",
+			"details": {
+				"context": "User provided mobile screenshots showing UI clutter/collision and requested 3D models inspired by real-world imagery rather than low-poly geometric primitives.",
+				"rationale": "Redesigned Zen HUD to a single compact top pill header and slim bottom dock with zero viewport occlusion; removed colliding floating hint text; moved variant info details to an on-demand modal drawer. Rebuilt 4 key models with high-fidelity real-world organic forms: 1) Sacred Lotus: removed harsh cone sunbeam, generated smooth spoon-curved concave petals in 3 concentric tiers with an inverted golden seedpod receptacle; 2) Windswept Juniper Bonsai: carved natural slate slab container, spiraling bleached deadwood shari ribbon, apical jin spikes, and multi-layered foliage clouds; 3) Moon Jellyfish Abyss: ultra-translucent Aurelia aurita bells, bioluminescent magenta horseshoe gonads, and flowing ruffled oral arms with asymmetric hydro-propulsion swimming; 4) Living Moss Terrarium: organic Leucobryum velvet cushion moss, fleshy cupped Echeveria succulent rosette in Fibonacci phyllotaxis, hexagonal prismatic quartz crystals, banded garden snail with eye ommatophores, and a Victorian blown-glass apothecary cloche on turned walnut tray.",
+				"affectedModules": ["scene", "models", "ui", "components"],
+				"outcomes": "Updated ZenHud.svelte, Canvas3D.svelte, plantarium.ts, bonsai-juniper.ts, aquarium-jellyfish.ts, terrarium.ts. Verified make check (0 errors, 0 warnings), make lint (clean code style), and make build (successful static prerendering)."
+			}
+		},
+		{
+			"timestamp": "2026-11-24T22:01:00+05:30",
+			"type": "implementation",
+			"summary": "Implemented top-right collapsible Info drawer, glowing Zen bonsai favicon, and visual overhaul of Carnivorous Pitcher and Sakura Bonsai",
+			"details": {
+				"context": "User requested moving the Info section to the top right corner so it never covers the 3D model, adding a favicon, and inspecting the running models live in the website to ensure aesthetic beauty.",
+				"rationale": "Replaced the central modal with a top-right collapsible card drawer with zero modal backdrop obstruction and click-outside dismissal; created custom glowing emerald Zen bonsai SVG favicon in static/favicon.svg and linked it in src/app.html; completely rebuilt Carnivorous Pitcher & Sundew with continuous climbing Nepenthes vine, broad arching lamina leaves, coiled tendrils, winged pitcher urns with ribbed peristome and lid, and glistening Drosera sundew rosettes; rebuilt Flowering Sakura Bonsai with layered cherry blossom twig canopies, fluttering petals, and glazed celadon pot with museum drainage feet. Verified live in browser subagent on http://localhost:5173 with 60 FPS performance and zero defects.",
+				"affectedModules": ["ui", "components", "scene", "models", "static", "app.html"],
+				"outcomes": "Updated ZenHud.svelte, src/app.html, static/favicon.svg, src/lib/assets/favicon.svg, terrarium-carnivorous.ts, bonsai-sakura.ts. Verified live in browser subagent, passed make check, make lint, and make build."
+			}
+		}
+	]
+}

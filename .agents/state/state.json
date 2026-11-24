@@ -1,0 +1,147 @@
+{
+	"project": "bonsium",
+	"version": "0.6.0",
+	"lastUpdated": "2026-11-24T22:01:00+05:30",
+	"activeBiosphere": "bonsai",
+	"biospheres": {
+		"bonsai": {
+			"status": "completed",
+			"items": ["Contemplative Pine Bonsai", "Flowering Sakura Bonsai", "Windswept Juniper Bonsai"],
+			"features": [
+				"nebari_root_flare",
+				"pot_drainage_feet",
+				"layered_pine_clouds",
+				"sakura_petal_shower",
+				"fukinagashi_windswept_trunk",
+				"natural_carved_slate_slab",
+				"carved_deadwood_shari_spiral",
+				"wind_sculpted_jin_spikes",
+				"dense_foliage_clouds_with_emerald_tips",
+				"horizontal_wind_particle_stream",
+				"warm_koto_filtered_synth"
+			]
+		},
+		"terrarium": {
+			"status": "completed",
+			"items": [
+				"Living Moss & Quartz Dome",
+				"Desert Sandstone & Saguaro",
+				"Carnivorous Pitcher & Sundew"
+			],
+			"features": [
+				"organic_leucobryum_velvet_cushion_moss",
+				"spoon_cupped_echeveria_succulent_rosette",
+				"hexagonal_prismatic_quartz_crystals",
+				"banded_garden_snail_with_ommatophores",
+				"hovering_glowing_fireflies",
+				"blown_glass_apothecary_cloche",
+				"turned_walnut_hardwood_base_tray",
+				"blossoming_saguaro_cactus",
+				"nepenthes_pitchers_with_peristome",
+				"drosera_sundew_dew_droplets",
+				"inharmonic_glass_chimes"
+			]
+		},
+		"aquarium": {
+			"status": "completed",
+			"items": [
+				"Freshwater River Grass Tank",
+				"Coral Reef & Anemone Lagoon",
+				"Moon Jellyfish Abyssal Tank"
+			],
+			"features": [
+				"ultra_translucent_aurelia_aurita_umbrella_bell",
+				"bioluminescent_magenta_horseshoe_gonads",
+				"ruffled_flowing_oral_arms",
+				"fine_marginal_fringe_tentacles",
+				"abyssal_sapphire_tank_lighting",
+				"vallisneria_current_sway",
+				"bogwood_driftwood_and_river_stones",
+				"branching_staghorn_corals",
+				"waving_sea_anemone",
+				"schooling_tropical_fish_5_species",
+				"drifting_marine_snow",
+				"submerged_bubble_and_deep_oceanic_synth"
+			]
+		},
+		"plantarium": {
+			"status": "completed",
+			"items": ["Radiant Sacred Lotus", "Fern Canopy & Wild Orchid", "Night-Blooming Cereus"],
+			"features": [
+				"smooth_concave_spoon_curved_lotus_petals",
+				"concentric_interleaved_radial_tiers",
+				"inverted_golden_seed_pod_receptacle",
+				"radiating_golden_pollen_filaments",
+				"dew_drops_on_lily_pads",
+				"cascading_maidenhair_ferns",
+				"wild_violet_orchid_blossoms",
+				"queen_of_the_night_starburst_petals",
+				"phosphorescent_nocturnal_spores",
+				"warm_analog_bloom_chords"
+			]
+		}
+	},
+	"engines": {
+		"graphics": {
+			"framework": "Three.js",
+			"dprMax": 2,
+			"shadows": true,
+			"lighting": "stable_neutral_studio_lighting",
+			"zoom": "wheel_and_pinch_zoom_3.2_to_8.5",
+			"zFightingMitigation": "polygonOffset_and_explicit_y_offsets",
+			"reducedMotion": "supported"
+		},
+		"audio": {
+			"framework": "Native Web Audio API",
+			"ambientDroneTuning": "432Hz Pythagorean",
+			"limiter": "DynamicsCompressorNode",
+			"reverb": "Algorithmic impulse response (3.2s decay, 0.45 wet)",
+			"state": "ready"
+		}
+	},
+	"ui": {
+		"mobileOptimization": "sleek_compact_pill_header_and_single_dock",
+		"infoDrawer": "accessible_modal_drawer_zero_canvas_obstruction",
+		"canvasHints": "floating_controls_removed_for_clean_viewport"
+	},
+	"deployment": {
+		"adapter": "@sveltejs/adapter-static",
+		"target": "GitHub Pages",
+		"workflow": ".github/workflows/deploy.yml",
+		"prerender": true,
+		"ssr": false
+	},
+	"devServer": {
+		"host": "0.0.0.0",
+		"exposedToNetwork": true
+	},
+	"theming": {
+		"modesSupported": ["light", "dark", "auto"],
+		"transitionDurationMs": 700,
+		"currentPreference": "auto",
+		"scope": "UI_only_models_remain_vibrant"
+	},
+	"activePlan": "info_top_right_favicon_and_model_visual_polish_2026-11-24.md",
+	"completedMilestones": [
+		"nvm_environment_pinned",
+		"makefile_nvm_svelte_orchestration",
+		"sveltekit3_svelte5_scaffold",
+		"tailwind4_zen_hud",
+		"audiovisual_event_bus_scaffold",
+		"light_dark_auto_theming",
+		"pure_procedural_webaudio_engine",
+		"procedural_3d_models_all_categories",
+		"zen_hud_item_selection_and_breathe_mode",
+		"quality_rework_v2_10_feedback_items_resolved",
+		"expanded_variants_github_pages_and_enhancements",
+		"mobile_ui_and_realworld_3d_overhaul",
+		"info_top_right_favicon_and_model_visual_polish"
+	],
+	"technicalDebt": [],
+	"performanceBenchmarks": {
+		"targetFps": 60,
+		"lastMeasuredFps": null,
+		"maxDrawCalls": 45,
+		"lastMeasuredDrawCalls": null
+	}
+}

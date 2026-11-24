@@ -1,0 +1,47 @@
+{
+  "project": "bonsium",
+  "version": "0.1.0",
+  "lastUpdated": "YYYY-MM-DDTHH:mm:ssZ",
+  "activeBiosphere": "bonsai",
+  "biospheres": {
+    "bonsai": {
+      "status": "planned",
+      "features": ["procedural_branching", "foliage_shader", "pruning_interaction", "koto_audio_synthesis"]
+    },
+    "terrarium": {
+      "status": "planned",
+      "features": ["glass_refraction", "humidity_particles", "moss_placement", "resonant_chimes"]
+    },
+    "aquarium": {
+      "status": "planned",
+      "features": ["caustics_shader", "boids_flocking", "bubble_acoustics", "ambient_pad_drone"]
+    },
+    "plantarium": {
+      "status": "planned",
+      "features": ["bloom_animation", "light_shafts", "stem_growth", "generative_harmonics"]
+    }
+  },
+  "engines": {
+    "graphics": {
+      "framework": "Threlte / Three.js",
+      "dprMax": 2,
+      "shadows": true,
+      "postProcessing": ["bloom", "vignette"]
+    },
+    "audio": {
+      "framework": "Tone.js / Web Audio API",
+      "masterVolumeDb": -6,
+      "currentScale": "hirajoshi",
+      "tempoBpm": 60,
+      "state": "unstarted"
+    }
+  },
+  "activePlan": null,
+  "technicalDebt": [],
+  "performanceBenchmarks": {
+    "targetFps": 60,
+    "lastMeasuredFps": null,
+    "maxDrawCalls": 50,
+    "lastMeasuredDrawCalls": null
+  }
+}

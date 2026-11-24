@@ -1,0 +1,17 @@
+{
+  "date": "YYYY-MM-DD",
+  "project": "bonsium",
+  "entries": [
+    {
+      "timestamp": "YYYY-MM-DDTHH:mm:ssZ",
+      "type": "decision",
+      "summary": "Brief description of the action or decision",
+      "details": {
+        "context": "Context or user prompt triggering this entry",
+        "rationale": "Why this approach was chosen",
+        "affectedModules": ["3d", "audio", "ui", "state", "shaders"],
+        "outcomes": "Results or consequences of the change"
+      }
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+@import 'tailwindcss';
+
+@layer base {
+	:root {
+		--bg-primary: #fbfdfb;
+		--bg-surface: rgba(255, 255, 255, 0.75);
+		--border-color: rgba(16, 185, 129, 0.2);
+		--text-primary: #19241e;
+		--text-muted: #4b5563;
+		--accent-color: #10b981;
+		--accent-glow: rgba(16, 185, 129, 0.15);
+	}
+
+	html.dark {
+		--bg-primary: #000000;
+		--bg-surface: rgba(10, 16, 12, 0.75);
+		--border-color: rgba(0, 255, 136, 0.25);
+		--text-primary: #f0fdf4;
+		--text-muted: #86efac;
+		--accent-color: #00ff88;
+		--accent-glow: rgba(0, 255, 136, 0.25);
+	}
+
+	html,
+	body {
+		transition:
+			background-color 700ms cubic-bezier(0.4, 0, 0.2, 1),
+			color 700ms cubic-bezier(0.4, 0, 0.2, 1),
+			border-color 700ms cubic-bezier(0.4, 0, 0.2, 1);
+		margin: 0;
+		padding: 0;
+		overflow: hidden;
+		background-color: var(--bg-primary);
+		color: var(--text-primary);
+		font-family:
+			system-ui,
+			-apple-system,
+			BlinkMacSystemFont,
+			'Segoe UI',
+			Roboto,
+			Oxygen,
+			Ubuntu,
+			Cantarell,
+			sans-serif;
+	}
+}
+
+/* ASMR Breathing pulse animation */
+@keyframes asmr-breathe {
+	0%,
+	100% {
+		transform: scale(1);
+		opacity: 0.85;
+	}
+	50% {
+		transform: scale(1.025);
+		opacity: 1;
+	}
+}
+
+.animate-breathe {
+	animation: asmr-breathe 8s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.animate-breathe {
+		animation: none;
+	}
+	html,
+	body {
+		transition: none !important;
+	}
+}
