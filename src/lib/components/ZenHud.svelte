@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { worldState, type ThemeMode } from '#lib/state/world-state.svelte';
+	import { worldState } from '#lib/state/world-state.svelte';
 	import type { BiosphereType } from '#lib/audio/bus/event-bus';
 	import { SCALES } from '#lib/audio/scales/scales';
 
@@ -14,12 +14,6 @@
 
 	function toggleInfo() {
 		isInfoOpen = !isInfoOpen;
-	}
-
-	function cycleTheme() {
-		const order: ThemeMode[] = ['dark', 'light', 'auto'];
-		const nextIdx = (order.indexOf(worldState.theme) + 1) % order.length;
-		worldState.setTheme(order[nextIdx]);
 	}
 
 	function playActiveItemSound() {
@@ -68,23 +62,54 @@
 				</h1>
 			</div>
 
-			<!-- Mobile Quick Controls (Theme Cycle, Mute, Info Toggle) -->
+			<!-- Mobile Quick Controls (Segmented Theme Selector, Mute, Info Toggle) -->
 			<div class="flex items-center gap-1.5 sm:hidden">
-				<button
-					type="button"
-					onclick={cycleTheme}
-					class="flex h-8 w-8 items-center justify-center rounded-full border border-emerald-500/20 bg-white/80 text-xs text-neutral-700 shadow-sm backdrop-blur-md transition hover:bg-emerald-500/10 focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:outline-hidden dark:bg-black/75 dark:text-neutral-300"
-					title={`Current theme: ${worldState.theme}. Tap to cycle.`}
-					aria-label={`Cycle theme. Currently ${worldState.theme}`}
+				<!-- Mobile Explicit 3-Mode Theme Selector -->
+				<div
+					class="flex items-center rounded-full border border-emerald-500/20 bg-white/80 p-0.5 shadow-sm backdrop-blur-md transition-colors duration-700 dark:bg-black/75"
+					role="group"
+					aria-label="Theme mode"
 				>
-					{#if worldState.theme === 'light'}
+					<button
+						type="button"
+						onclick={() => worldState.setTheme('light')}
+						class="flex h-7 w-7 items-center justify-center rounded-full text-xs transition {worldState.theme ===
+						'light'
+							? 'bg-emerald-500/25 font-bold text-emerald-950 shadow-xs'
+							: 'text-neutral-500 hover:text-black dark:text-neutral-400'}"
+						title="Light Mode (Fresh & Green)"
+						aria-label="Light mode"
+						aria-pressed={worldState.theme === 'light'}
+					>
 						☀️
-					{:else if worldState.theme === 'dark'}
+					</button>
+					<button
+						type="button"
+						onclick={() => worldState.setTheme('dark')}
+						class="flex h-7 w-7 items-center justify-center rounded-full text-xs transition {worldState.theme ===
+						'dark'
+							? 'bg-[#00ff88]/25 font-bold text-[#00ff88] shadow-xs'
+							: 'text-neutral-500 hover:text-black dark:text-neutral-400'}"
+						title="Dark Mode (True Black & Neon Green)"
+						aria-label="Dark mode"
+						aria-pressed={worldState.theme === 'dark'}
+					>
 						🌙
-					{:else}
+					</button>
+					<button
+						type="button"
+						onclick={() => worldState.setTheme('auto')}
+						class="flex h-7 w-7 items-center justify-center rounded-full text-xs transition {worldState.theme ===
+						'auto'
+							? 'bg-emerald-500/20 font-bold text-emerald-800 shadow-xs dark:text-[#00ff88]'
+							: 'text-neutral-500 hover:text-black dark:text-neutral-400'}"
+						title="Auto Mode (Follows System OS Theme)"
+						aria-label="Auto mode"
+						aria-pressed={worldState.theme === 'auto'}
+					>
 						⚙️
-					{/if}
-				</button>
+					</button>
+				</div>
 
 				<button
 					type="button"
@@ -100,9 +125,9 @@
 				<button
 					type="button"
 					onclick={toggleInfo}
-					class="flex h-8 w-8 items-center justify-center rounded-full border border-emerald-500/20 text-xs shadow-sm backdrop-blur-md transition focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:outline-hidden {isInfoOpen
+					class="flex h-8 w-8 items-center justify-center rounded-full border text-xs shadow-sm backdrop-blur-md transition focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:outline-hidden {isInfoOpen
 						? 'border-emerald-500 bg-emerald-500/20 text-emerald-950 dark:border-[#00ff88] dark:bg-[#00ff88]/20 dark:text-[#00ff88]'
-						: 'bg-white/80 text-neutral-700 hover:bg-emerald-500/10 dark:bg-black/75 dark:text-neutral-300'}"
+						: 'border-emerald-500/20 bg-white/80 text-neutral-700 hover:bg-emerald-500/10 dark:bg-black/75 dark:text-neutral-300'}"
 					title="Toggle item information"
 					aria-label="Toggle item information"
 					aria-expanded={isInfoOpen}
@@ -143,19 +168,56 @@
 			</div>
 		</div>
 
-		<!-- Desktop Top-Right Controls: Theme, Breathe, Hide, and Prominent Info Toggle -->
+		<!-- Desktop Top-Right Controls: Explicit 3-Mode Theme Selector, Breathe, Hide, and Prominent Info Toggle -->
 		<div class="pointer-events-auto hidden items-center gap-2 sm:flex">
-			<button
-				type="button"
-				onclick={cycleTheme}
-				class="flex items-center gap-1 rounded-full border border-emerald-500/20 bg-white/80 px-3 py-1.5 text-xs text-neutral-700 shadow-sm backdrop-blur-md transition hover:bg-emerald-500/10 focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:outline-hidden dark:bg-black/75 dark:text-neutral-300"
-				title={`Theme: ${worldState.theme}. Tap to cycle.`}
+			<!-- Segmented Theme Switcher -->
+			<div
+				class="flex items-center rounded-full border border-emerald-500/20 bg-white/80 p-0.5 shadow-sm backdrop-blur-md transition-colors duration-700 dark:bg-black/75"
+				role="group"
+				aria-label="Theme mode selection"
 			>
-				<span>
-					{worldState.theme === 'light' ? '☀️' : worldState.theme === 'dark' ? '🌙' : '⚙️'}
-				</span>
-				<span class="capitalize">{worldState.theme}</span>
-			</button>
+				<button
+					type="button"
+					onclick={() => worldState.setTheme('light')}
+					class="flex items-center gap-1 rounded-full px-2.5 py-1 text-xs font-medium transition-all {worldState.theme ===
+					'light'
+						? 'border border-emerald-500/40 bg-emerald-500/25 text-emerald-950 shadow-xs'
+						: 'text-neutral-600 hover:text-black dark:text-neutral-400 dark:hover:text-white'}"
+					title="Light Mode (Fresh, white with subtle green accents)"
+					aria-pressed={worldState.theme === 'light'}
+				>
+					<span>☀️</span>
+					<span>Light</span>
+				</button>
+
+				<button
+					type="button"
+					onclick={() => worldState.setTheme('dark')}
+					class="flex items-center gap-1 rounded-full px-2.5 py-1 text-xs font-medium transition-all {worldState.theme ===
+					'dark'
+						? 'border border-[#00ff88]/40 bg-[#00ff88]/25 text-[#00ff88] shadow-xs'
+						: 'text-neutral-600 hover:text-black dark:text-neutral-400 dark:hover:text-white'}"
+					title="Dark Mode (True black with neon green)"
+					aria-pressed={worldState.theme === 'dark'}
+				>
+					<span>🌙</span>
+					<span>Dark</span>
+				</button>
+
+				<button
+					type="button"
+					onclick={() => worldState.setTheme('auto')}
+					class="flex items-center gap-1 rounded-full px-2.5 py-1 text-xs font-medium transition-all {worldState.theme ===
+					'auto'
+						? 'border border-emerald-500/40 bg-emerald-500/20 text-emerald-950 shadow-xs dark:text-[#00ff88]'
+						: 'text-neutral-600 hover:text-black dark:text-neutral-400 dark:hover:text-white'}"
+					title="Auto Mode (Follows your OS system theme preference)"
+					aria-pressed={worldState.theme === 'auto'}
+				>
+					<span>⚙️</span>
+					<span>Auto</span>
+				</button>
+			</div>
 
 			<button
 				type="button"
@@ -238,7 +300,7 @@
 	</footer>
 </aside>
 
-<!-- TOP-RIGHT COLLAPSIBLE INFO CARD (Never obstructs center 3D scene, easily dismissable) -->
+<!-- TOP-RIGHT COLLAPSIBLE INFO CARD (Clear vertical margin below header, zero text-button collision) -->
 {#if isInfoOpen}
 	<!-- Subtle click-outside backdrop detector -->
 	<button
@@ -250,7 +312,7 @@
 	></button>
 
 	<section
-		class="fixed top-24 right-3 z-40 flex w-[calc(100vw-1.5rem)] max-w-sm flex-col gap-3 rounded-2xl border border-emerald-500/30 bg-white/95 p-4 shadow-xl backdrop-blur-xl transition-all duration-300 sm:top-16 sm:right-5 sm:max-w-md sm:p-5 dark:border-[#00ff88]/30 dark:bg-zinc-950/95"
+		class="fixed top-28 right-3 z-40 flex w-[calc(100vw-1.5rem)] max-w-sm flex-col gap-3 rounded-2xl border border-emerald-500/30 bg-white/95 p-4 shadow-2xl backdrop-blur-xl transition-all duration-300 sm:top-20 sm:right-5 sm:max-w-md sm:p-5 dark:border-[#00ff88]/30 dark:bg-zinc-950/95"
 		aria-label="Item Story & Details"
 	>
 		<div class="flex items-start justify-between gap-2 border-b border-emerald-500/15 pb-2.5">
@@ -277,27 +339,28 @@
 			{worldState.activeItem.lore}
 		</p>
 
-		<!-- Generative sound preview -->
+		<!-- Generative sound preview with separated header row & description (eliminates text collision) -->
 		<div
-			class="flex items-center justify-between gap-3 rounded-xl bg-emerald-500/5 p-2.5 dark:bg-white/5"
+			class="flex flex-col gap-2 rounded-xl border border-emerald-500/15 bg-emerald-500/5 p-3 dark:border-white/10 dark:bg-white/5"
 		>
-			<div class="min-w-0">
+			<div class="flex items-center justify-between gap-2">
 				<span
-					class="block text-[10px] tracking-wider text-neutral-400 uppercase dark:text-neutral-500"
+					class="text-[10px] font-semibold tracking-wider text-emerald-800 uppercase dark:text-[#00ff88]"
 				>
 					Scale: {SCALES[worldState.currentScale].name}
 				</span>
-				<span class="truncate text-xs text-neutral-800 dark:text-neutral-200">
-					{worldState.activeItem.instrumentLore}
-				</span>
+				<button
+					type="button"
+					onclick={playActiveItemSound}
+					class="flex items-center gap-1.5 rounded-full border border-emerald-500/40 bg-emerald-500/20 px-3 py-1 text-xs font-medium text-emerald-950 transition hover:bg-emerald-500/30 dark:border-[#00ff88]/50 dark:bg-[#00ff88]/20 dark:text-[#00ff88]"
+				>
+					<span class="text-[10px]">▶</span>
+					<span>Play Chime</span>
+				</button>
 			</div>
-			<button
-				type="button"
-				onclick={playActiveItemSound}
-				class="shrink-0 rounded-full border border-emerald-500/30 bg-emerald-500/20 px-3 py-1.5 text-xs font-medium text-emerald-900 transition hover:bg-emerald-500/30 dark:border-[#00ff88]/40 dark:bg-[#00ff88]/20 dark:text-[#00ff88]"
-			>
-				▶ Play
-			</button>
+			<p class="text-xs leading-relaxed text-neutral-700 dark:text-neutral-300">
+				{worldState.activeItem.instrumentLore}
+			</p>
 		</div>
 
 		<!-- Compact Audio Controls inside Info Drawer -->

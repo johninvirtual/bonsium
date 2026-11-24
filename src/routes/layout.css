@@ -1,24 +1,29 @@
 @import 'tailwindcss';
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @layer base {
 	:root {
 		--bg-primary: #fbfdfb;
-		--bg-surface: rgba(255, 255, 255, 0.75);
-		--border-color: rgba(16, 185, 129, 0.2);
+		--bg-surface: rgba(255, 255, 255, 0.85);
+		--border-color: rgba(16, 185, 129, 0.25);
 		--text-primary: #19241e;
 		--text-muted: #4b5563;
 		--accent-color: #10b981;
 		--accent-glow: rgba(16, 185, 129, 0.15);
+		color-scheme: light;
 	}
 
-	html.dark {
+	html.dark,
+	:root[data-theme='dark'] {
 		--bg-primary: #000000;
-		--bg-surface: rgba(10, 16, 12, 0.75);
-		--border-color: rgba(0, 255, 136, 0.25);
+		--bg-surface: rgba(10, 16, 12, 0.85);
+		--border-color: rgba(0, 255, 136, 0.3);
 		--text-primary: #f0fdf4;
 		--text-muted: #86efac;
 		--accent-color: #00ff88;
 		--accent-glow: rgba(0, 255, 136, 0.25);
+		color-scheme: dark;
 	}
 
 	html,

@@ -3,6 +3,9 @@ import adapter from '@sveltejs/adapter-static';
 import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vite';
 
+const basePath = (process.argv.includes('dev') ? '' : process.env.BASE_PATH || '') as
+	'' | `/${string}`;
+
 export default defineConfig({
 	server: {
 		host: '0.0.0.0',
@@ -25,7 +28,10 @@ export default defineConfig({
 				fallback: '404.html',
 				precompress: false,
 				strict: false
-			})
+			}),
+			paths: {
+				base: basePath
+			}
 		})
 	]
 });

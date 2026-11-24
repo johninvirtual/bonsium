@@ -78,6 +78,34 @@
 				"affectedModules": ["ui", "components", "scene", "models", "static", "app.html"],
 				"outcomes": "Updated ZenHud.svelte, src/app.html, static/favicon.svg, src/lib/assets/favicon.svg, terrarium-carnivorous.ts, bonsai-sakura.ts. Verified live in browser subagent, passed make check, make lint, and make build."
 			}
+		},
+		{
+			"timestamp": "2026-11-24T22:23:00+05:30",
+			"type": "bugfix",
+			"summary": "Resolved Tailwind v4 class-based dark variant and added explicit 3-way segmented theme controls",
+			"details": {
+				"context": "User reported that light and dark mode selection was not working as expected and was stuck acting as auto mode.",
+				"rationale": "Tailwind CSS v4 defaults the `dark:` variant to the `@media (prefers-color-scheme: dark)` OS media query rather than the HTML `.dark` class, meaning toggling `.dark` in JavaScript had no effect on Tailwind dark classes and caused the UI to always mirror the OS system mode. Fixed by registering `@custom-variant dark (&:where(.dark, .dark *));` in layout.css, directly binding the main background gradient in +page.svelte to worldState.activeThemeActual, and replacing ambiguous cycle buttons with an explicit segmented selector [ ☀️ Light | 🌙 Dark | ⚙️ Auto ] across desktop and mobile. Verified live with browser subagent on http://localhost:5173.",
+				"affectedModules": [
+					"theming",
+					"layout.css",
+					"+page.svelte",
+					"ZenHud.svelte",
+					"world-state.svelte.ts"
+				],
+				"outcomes": "Added @custom-variant dark to layout.css; updated +page.svelte and ZenHud.svelte with explicit 3-mode segmented controls; verified clean transition in browser subagent between sunlit white/mint studio and deep true-black neon-emerald sanctuary."
+			}
+		},
+		{
+			"timestamp": "2026-11-24T23:04:00+05:30",
+			"type": "bugfix",
+			"summary": "Resolved Info card header overlap and play button text collision",
+			"details": {
+				"context": "User provided screenshot showing top-right Info card overlapping the header close button and the sound description text flowing under/through the Play button.",
+				"rationale": "Adjusted the fixed positioning of the Info card to sm:top-20 (80px) and top-28 on mobile, creating a clean 25px vertical breathing space beneath the header buttons; restructured the sound card into a two-row flex-column layout with the Scale badge and Play button on the top row and full description text wrapping naturally below, eliminating all text collision and truncation artifacts. Verified live in browser subagent on http://localhost:5173.",
+				"affectedModules": ["ui", "ZenHud.svelte"],
+				"outcomes": "Updated ZenHud.svelte, passed make check, make lint, and make build."
+			}
 		}
 	]
 }

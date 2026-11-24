@@ -24,7 +24,10 @@
 </svelte:head>
 
 <main
-	class="relative h-screen w-screen overflow-hidden bg-gradient-to-b from-[#fbfdfb] via-[#f0f6f2] to-[#e8f2eb] transition-colors duration-700 ease-in-out select-none dark:from-[#000000] dark:via-[#040d07] dark:to-[#000000]"
+	class="relative h-screen w-screen overflow-hidden transition-colors duration-700 ease-in-out select-none {worldState.activeThemeActual ===
+	'dark'
+		? 'bg-gradient-to-b from-[#000000] via-[#040d07] to-[#000000]'
+		: 'bg-gradient-to-b from-[#fbfdfb] via-[#f0f7f2] to-[#e4f0e7]'}"
 >
 	<!-- Real-time 3D Viewport -->
 	<div class="absolute inset-0">
@@ -48,27 +51,22 @@
 				<div class="animate-breathe text-6xl" aria-hidden="true">🌱</div>
 
 				<div class="space-y-2">
-					<h2
-						class="text-xl font-light tracking-widest text-emerald-950 uppercase dark:text-emerald-100"
-					>
-						Bonsium
+					<h2 class="text-xl font-medium tracking-wide text-emerald-950 dark:text-emerald-100">
+						Enter Bonsium
 					</h2>
-					<p class="text-xs leading-relaxed font-light text-neutral-600 dark:text-neutral-400">
-						Interactive 3D biospheres with living generative ASMR soundscapes.
+					<p class="text-xs leading-relaxed text-neutral-600 dark:text-neutral-400">
+						A meditative 3D audiovisual sanctuary. Tap below to awaken procedural ambient music and
+						interactive acoustic vibrations.
 					</p>
 				</div>
 
 				<button
 					type="button"
 					onclick={handleEnterExperience}
-					class="w-full cursor-pointer rounded-full border border-emerald-600/30 bg-emerald-600 px-6 py-3 text-xs font-semibold tracking-wider text-white uppercase shadow-md transition hover:bg-emerald-700 hover:shadow-lg focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:outline-hidden dark:border-[#00ff88]/50 dark:bg-[#00ff88]/20 dark:text-[#00ff88] dark:hover:bg-[#00ff88]/30"
+					class="w-full rounded-full border border-emerald-500/40 bg-emerald-500/20 px-6 py-3 text-sm font-medium tracking-wider text-emerald-950 uppercase transition-all duration-300 hover:border-emerald-500 hover:bg-emerald-500/30 hover:shadow-lg hover:shadow-emerald-500/20 focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:outline-hidden dark:border-[#00ff88]/50 dark:bg-[#00ff88]/20 dark:text-[#00ff88] dark:hover:border-[#00ff88] dark:hover:bg-[#00ff88]/30 dark:hover:shadow-[#00ff88]/20"
 				>
-					Begin Contemplation
+					Enter Sanctuary
 				</button>
-
-				<p class="text-[10px] font-light text-neutral-400 dark:text-neutral-500">
-					Sound is 100% procedurally synthesized in real-time.
-				</p>
 			</div>
 		</div>
 	{/if}
